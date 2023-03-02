@@ -16,4 +16,4 @@ app.listen(process.env.PORT, () => {
   console.log(`running on port ${process.env.PORT}`);
 });
 
-app.use(`/api/:table`, budget_router);
+app.use(`/`, budget_router);

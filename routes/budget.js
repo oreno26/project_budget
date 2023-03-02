@@ -10,7 +10,7 @@ const {
 const router = express.Router();
 
 router.get('/', _showAll)
-router.post('/create', _createTable)
+router.post("/create/", _createTable)
 
 router.get('/', _getTotal)
 

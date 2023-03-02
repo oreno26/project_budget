@@ -10,6 +10,7 @@ const insertItem = (table, item) => {
 };
 
 const createTable = (table) => {//???????
+  console.log(table[1] + "module");
   return db.schema.createTableLike(`${table}`, 'car_restore');
 };
 

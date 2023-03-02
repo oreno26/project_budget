@@ -28,9 +28,12 @@ const _insertItem = (req, res) => {
 };
 
 const _createTable = (req, res) => {
-    createTable(req.body)
-    .then(data => {
-        res.json(data)
+    createTable(req.body.table)
+    .then((data) => {
+      console.log(data + "control")
+        res.json(data);
+        
+      
     })
     .catch(err => {
         console.log(err);
