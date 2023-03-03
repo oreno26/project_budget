@@ -1,29 +1,29 @@
 const {db} = require("../config/db.js");
 
-const showAll  = (table) => {
-    return db('car_restore')
-    .select('id','name','price')
+const showAll  = () => {
+    return db('budgetapp')
+    .select('id','prohect','name','price')
     .orderBy('name');
   }
-const insertItem = (table, item) => {
-  return db(`${table}`).insert(item).returning("*");
+const insertItem = (item) => {
+  return db('budgetapp').insert(item).returning("*");
 };
 
-const createTable = (table) => {//???????
-  console.log(table[1] + "module");
-  return db.schema.createTableLike(`${table}`, 'car_restore');
+// const createTable = (table) => {//???????
+//   console.log(table[1] + "module");
+//   return db.schema.createTableLike(`${table}`, 'car_restore');
+// };
+
+// const deleteTable = (table) => {
+//   return db.schema.dropTable(`${table}`)
+// }
+
+const deleteItem = (id) => {
+  return db(`budgetapp`).del().where({ id: id });
 };
 
-const deleteTable = (table) => {
-  return db.schema.dropTable(`${table}`)
-}
-
-const deleteItem = (table, id) => {
-  return db(`${table}`).del().where({ id: id });
-};
-
-const getTotal = (table) => {
-  return db(`${table}`).sum('price');
+const getTotal = () => {
+  return db(`budgetapp`).sum('price');
 };
 
 
