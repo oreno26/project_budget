@@ -7,32 +7,40 @@ const makeTable = (e) => {
   if (project.length > 2) {
     const title = document.createTextNode(project.toUpperCase());
     const projectBox = document.createElement("div");
-//form id only placeholder
-    const projectForm = document.createElement("form") 
-    projectForm.setAttribute("id", `${project}`)
+//form 
+    const projectForm = document.createElement("form");
+    projectForm.setAttribute("action", "http://localhost:5001/api/budgetapp");
+    projectForm.setAttribute("method", "post");
+    projectForm.addEventListener("submit", addExpense);
+//hidden input for the project
+    const projectInput = document.createElement("input");
+    projectInput.setAttribute("type", "hidden");
+    projectInput.setAttribute("name", `project`);
+    projectInput.setAttribute("value", `${project}`);// used to make sure the item is classed correctly in the database
 //item input
-    const itemInput = document.createElement("input")
-    itemInput.setAttribute("type", "text")
-    itemInput.setAttribute("name", "name")
+    const itemInput = document.createElement("input");
+    itemInput.setAttribute("type", "text");
+    itemInput.setAttribute("name", "name");
 //price input
-    const priceInput = document.createElement("input")
-    priceInput.setAttribute("type", "number")
-    priceInput.setAttribute('name', "price")
+    const priceInput = document.createElement("input");
+    priceInput.setAttribute("type", "number");
+    priceInput.setAttribute("name", "price");
 //button
-    const projectSubBtn = document.createElement("button")
-    projectSubBtn.setAttribute("type", "sublmit")
-    btnText = document.createTextNode("Add Expense")
-    projectSubBtn.appendChild(btnText)
-
-    projectForm.appendChild(itemInput)
-    projectForm.appendChild(priceInput)
-    projectForm.appendChild(projectSubBtn)
-
-    projectBox.classList.add('projetcBox');
-    projectBox.appendChild(title)
-    projectBox.appendChild(projectForm)
-    budgetsBox.appendChild(projectBox)
-
+    const projectSubBtn = document.createElement("button");
+    projectSubBtn.setAttribute("type", "submit");
+    btnText = document.createTextNode("Add Expense");
+    projectSubBtn.appendChild(btnText);
+//appending all the inputs to the form
+    projectForm.appendChild(projectInput);
+    projectForm.appendChild(itemInput);
+    projectForm.appendChild(priceInput);
+    projectForm.appendChild(projectSubBtn);
+//appending the form and title to the box
+    projectBox.classList.add("projetcBox");
+    projectBox.appendChild(title);
+    projectBox.appendChild(projectForm);
+ //appending to the page   
+    budgetsBox.appendChild(projectBox);
   } else {
     alert("name to short");
   }
@@ -40,3 +48,7 @@ const makeTable = (e) => {
 
 projectStart.addEventListener("submit", makeTable);
 //check if i can use EJS for the small form
+function addExpense(e) {
+  e.preventDefault()
+  console.log(e.target.value);
+}
