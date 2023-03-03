@@ -20,4 +20,4 @@ app.listen(process.env.PORT, () => {
   console.log(`running on port ${process.env.PORT}`);
 });
 
-app.use(`/`, budget_router);
+app.use(`/api/budgetapp`, budget_router);

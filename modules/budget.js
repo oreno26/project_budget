@@ -2,7 +2,7 @@ const {db} = require("../config/db.js");
 
 const showAll  = () => {
     return db('budgetapp')
-    .select('id','prohect','name','price')
+    .select('id','project','name','price')
     .orderBy('name');
   }
 const insertItem = (item) => {
@@ -29,4 +29,4 @@ const getTotal = () => {
 
 
 
-module.exports = { insertItem, createTable, deleteItem, getTotal, showAll, deleteTable };
+module.exports = { insertItem, deleteItem, getTotal, showAll };
