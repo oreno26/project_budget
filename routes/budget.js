@@ -10,9 +10,6 @@ const router = express.Router();
 
 router.get('/', _showAll)
 // router.post("/create/", _createTable)
-
-router.delete("/", _deleteItem)
-
 router.get('/', _getTotal)
 
 router.post('/', _insertItem)

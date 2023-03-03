@@ -9,16 +9,25 @@
 </head>
 <body>
     <h1>Project Manager</h1>
-<form id="projectStart" action="http://localhost:5001/create/" method="post">
-    <input type="text" name="table" id="" placeholder="Project">
-    <button >Add Project</button>
+
+    
+    <form id="projectStart">
+        <input type="text" name="project" >
+        <button type="submit" >Start Project</button>
+    </form>
+
+
+<form id="projectStart" action="http://localhost:5001/api/budgetapp" method="post">
+    <input type="text" name="project" id="" placeholder="project">
+    <input type="text" name="name" id="" placeholder="item">
+    <input type="number" name="price" id="" placeholder="price">
+    <button >Add item</button>
 </form>
-<form action="http://localhost:5001/create/" method="post">
-    <input type="text" name="name" id="">
-    <input type="number" name="price" id="">
-    <button type="submit">log item</button>
-</form>
-    <div id="budgets"></div>
+
+    <div id="budgetsBox"></div>
+
+
+
 <script src="budgetPro.js"></script>
 </body>
 </html>
