@@ -1,40 +1,48 @@
-*{
-    box-sizing: border-box;
-    color: crimson;
-    /* background-color: darkgrey; */
- }
- body{
-    background-image: url(../image/background.jpg);
-    background-repeat: no-repeat;
-    /* background-size: contain; */
- }
- 
- form{
-    width: 24vw;
- }
- #start{
-text-align: center;
-margin-bottom: 10vh;
- }
- #projectStart{
-    margin-left: 37.5vw;
- }
- #budgetsBox{
-display: flex;
-justify-content: center;
-justify-content: space-evenly;
-flex-wrap: wrap;
-/* width: 80vw; */
-/* border: 0.5rem solid black;
-border-radius: 12px; */
- }
-.projectBox{
-    width: 25vw;
-    background-color: darkgrey;
-    height: 400px;
-    border: 0.4rem crimson solid;
-    border-radius: 5px;
+* {
+  box-sizing: border-box;
+  color: crimson;
+  /* background-color: darkgrey; */
 }
-.expenseadd{
-    border-bottom: 0.2rem crimson solid;
+body {
+  background-image: url(../image/background.jpg);
+  background-repeat: no-repeat;
+  /* background-size: contain; */
+}
+
+form {
+  width: 24vw;
+}
+#start {
+  text-align: center;
+  margin-bottom: 10vh;
+}
+#projectStart {
+  margin-left: 37.5vw;
+}
+#budgetsBox {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  /* width: 80vw; */
+  /* border: 0.5rem solid black;
+border-radius: 12px; */
+}
+
+.totalBox {
+  position: absolute;
+  bottom: 0;
+  font-size: 2rem;
+}
+
+.projectBox {
+  width: 25vw;
+  background-color: darkgrey;
+  height: 400px;
+  border: 0.4rem crimson solid;
+  border-radius: 5px;
+  position: relative;
+}
+.expenseadd {
+  border-bottom: 0.2rem crimson solid;
 }

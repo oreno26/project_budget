@@ -58,7 +58,14 @@ const _deleteItem = (req, res) => {
 };
 
 const _getTotal = (req, res) => {
-  getTotal(req.body);
+  getTotal(req.params.project)
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 module.exports = {
