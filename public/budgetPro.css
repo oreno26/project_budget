@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   color: crimson;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   /* background-color: darkgrey; */
 }
 body {
@@ -40,9 +41,14 @@ border-radius: 12px; */
   background-color: darkgrey;
   height: 400px;
   border: 0.4rem crimson solid;
-  border-radius: 5px;
+  border-radius: 10px;
   position: relative;
 }
 .expenseadd {
   border-bottom: 0.2rem crimson solid;
 }
+footer{
+  position: fixed;
+  bottom: 0;
+font-size: 2rem;
+font-weight: bold;}
