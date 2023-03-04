@@ -39,22 +39,23 @@ const makeTable = (e) => {
     projectForm.appendChild(priceInput);
     projectForm.appendChild(projectSubBtn);
     //line break
-    const lineBreak = document.createElement('br')
+    const lineBreak = document.createElement("br");
     //list
-    const xpList = document.createElement('ul')
-    xpList.setAttribute("id", `${project}List`)
+    const xpList = document.createElement("ul");
+    xpList.setAttribute("id", `${project}List`);
     //total
-    const totalText = document.createTextNode("Total:    ")
-    const totalBox = document.createElement('div')
-    totalBox.appendChild(totalText)
-    totalBox.classList.add('totalBox')
+    const totalText = document.createTextNode("Total:    ");
+    const totalBox = document.createElement("div");
+    totalBox.appendChild(totalText);
+    totalBox.setAttribute("id", `${project}Total`)
+    totalBox.classList.add("totalBox");
     //appending the form and title to the box
     projectBox.classList.add("projectBox");
     projectBox.appendChild(title);
     projectBox.appendChild(projectForm);
-    projectBox.appendChild(lineBreak)
-    projectBox.appendChild(xpList)
-    projectBox.appendChild(totalBox)
+    projectBox.appendChild(lineBreak);
+    projectBox.appendChild(xpList);
+    projectBox.appendChild(totalBox);
     //appending to the page
     budgetsBox.appendChild(projectBox);
   } else if (project.length > 2 && count <= 3) {
@@ -81,12 +82,32 @@ const addExpense = (e) => {
     .catch((err) => console.log(err));
 };
 
-
 const addToList = (arr) => {
-  const { project , name , price} = arr[0]
-  const myList = document.getElementById(`${project}List`)
-  const li = document.createElement('li')
-  const text = document.createTextNode(`Item: ${name}         Price: ${price}₪`)
-  li.appendChild(text)
-  myList.appendChild(li)
-}
+  const { project, name, price } = arr[0];
+  const myList = document.getElementById(`${project}List`);
+  const li = document.createElement("li");
+  const text = document.createTextNode(
+    `Item: ${name}         Price: ${price}₪`
+  );
+  li.appendChild(text);
+  myList.appendChild(li);
+  addItUp(project);
+};
+
+const addItUp = (proj) => {
+  try {
+    fetch(`http://localhost:5001/api/budgetapp/${proj}`)
+      .then((res) => res.json())
+      .then((data) => postSum(data, proj));
+  } catch (err) {
+    console.log("erroe");
+  }
+};
+
+const postSum = (arr, pro) => {
+  const { sum } = arr[0];
+  const totalBox = document.getElementById(`${pro}Total`)
+  const totalText = document.createTextNode(sum)
+  totalBox.innerHTML = `Total: ${sum}₪`
+  console.log(sum, pro);
+};
