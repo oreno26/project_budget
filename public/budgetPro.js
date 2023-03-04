@@ -11,6 +11,7 @@ const makeTable = (e) => {
     const projectForm = document.createElement("form");
     projectForm.setAttribute("action", "http://localhost:5001/api/budgetapp");
     projectForm.setAttribute("method", "post");
+    projectForm.setAttribute("class", "expenseadd");
     projectForm.addEventListener("submit", addExpense);
 //hidden input for the project
     const projectInput = document.createElement("input");
@@ -36,19 +37,19 @@ const makeTable = (e) => {
     projectForm.appendChild(priceInput);
     projectForm.appendChild(projectSubBtn);
 //appending the form and title to the box
-    projectBox.classList.add("projetcBox");
+    projectBox.classList.add("projectBox");
     projectBox.appendChild(title);
     projectBox.appendChild(projectForm);
  //appending to the page   
     budgetsBox.appendChild(projectBox);
   } else {
-    alert("name to short");
+    alert("name too short");
   }
 };
 
 projectStart.addEventListener("submit", makeTable);
-//check if i can use EJS for the small form
+
 function addExpense(e) {
   e.preventDefault()
-  console.log(e.target.value);
+  console.log(e.target[1].value);
 }
