@@ -1,25 +1,31 @@
-const {db} = require("../config/db.js");
+const { db } = require("../config/db.js");
 
-const showAll  = (table) => {
-    return db('car_restore')
-    .select('id','name','price')
-    .orderBy('name');
-  }
-const insertItem = (table, item) => {
-  return db(`${table}`).insert(item).returning("*");
+const showAll = () => {
+  return db("budgetapp")
+    .select("id", "project", "name", "price")
+    .orderBy("name");
+};
+const insertItem = (item) => {
+  return db("budgetapp").insert(item).returning("*");
 };
 
-const createTable = (table) => {//???????
-  console.log(table[1] + "module");
-  return db.schema.createTableLike(`${table}`, 'car_restore');
+// const createTable = (table) => {//???????
+//   console.log(table[1] + "module");
+//   return db.schema.createTableLike(`${table}`, 'car_restore');
+// };
+
+// const deleteTable = (table) => {
+//   return db.schema.dropTable(`${table}`)
+// }
+
+const deleteItem = (id) => {
+  return db(`budgetapp`).del().where({ id: id });
 };
 
-const deleteItem = (table, id) => {
-  return db(`${table}`).del().where({ id: id });
+const getTotal = (project) => {
+  console.log(project);
+  return db(`budgetapp`).sum("price").where({project : project})
+
 };
 
-const getTotal = (table) => {
-  return db(`${table}`).sum('price');
-};
-
-module.exports = { insertItem, createTable, deleteItem, getTotal, showAll };
+module.exports = { insertItem, deleteItem, getTotal, showAll };

@@ -1,6 +1,5 @@
 const express = require('express');
 const {
-    _createTable,
     _deleteItem,
     _insertItem,
     _getTotal,
@@ -10,12 +9,11 @@ const {
 const router = express.Router();
 
 router.get('/', _showAll)
-router.post("/create/", _createTable)
-
-router.get('/', _getTotal)
+// router.post("/create/", _createTable)
+router.get('/:project', _getTotal)
 
 router.post('/', _insertItem)
-router.delete('/:id', _deleteItem)
+// router.delete('/:id', _deleteItem)
 
 
 
